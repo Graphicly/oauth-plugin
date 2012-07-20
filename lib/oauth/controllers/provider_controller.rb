@@ -33,6 +33,8 @@ module OAuth
       end
 
       def token
+        # if refresh token param, return new oauth2_token
+        
         @client_application = ClientApplication.find_by_key! params[:client_id]
         if @client_application.secret != params[:client_secret]
           oauth2_error "invalid_client"
